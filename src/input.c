@@ -15,7 +15,8 @@ Sentence inputSentence(int *sentenceCounter){
     wchar_t currChar = getwchar();
     int flag = 1;
 
-    while(currChar != L'.'){
+    do{
+        currChar = getwchar();
         if (currChar == L'\n'){
             (*sentenceCounter)++;
             if ((*sentenceCounter) == 2){
@@ -35,8 +36,8 @@ Sentence inputSentence(int *sentenceCounter){
             sentence.chars = realloc(sentence.chars, sentenceCapacity * sizeof(wchar_t)); 
         }
 
-        currChar = getwchar();
-    }
+         
+    }while(currChar != L'.');
     sentence.chars[sentenceSize] = L'\0';
     sentence.size = sentenceSize;
     return sentence;
