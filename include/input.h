@@ -1,5 +1,5 @@
-#ifndef INPUTTEXT_H
-#define INPUTTEXT_H
+#ifndef INPUT_H
+#define INPUT_H
 
 //#include <stdio.h>
 //#include <string.h>
@@ -11,6 +11,7 @@
 int getCommand();
 Sentence inputSentence(int *sentenceCounter);
 Text inputText();
+float calculateAverageWordsLength(wchar_t *sentence);
 
 
 #endif

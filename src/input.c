@@ -40,6 +40,7 @@ Sentence inputSentence(int *newLineCounter){
     }while(currChar != L'.');
     sentence.chars[sentenceSize] = L'\0';
     sentence.size = sentenceSize;
+    sentence.size = calculateAverageWordsLength(sentence.chars);
     return sentence;
 }
 
@@ -94,4 +95,19 @@ Text inputText(){
     }
 
     return text;
+}
+
+float calculateAverageWordsLength(wchar_t *sentence){
+    int wordCounter = 0;
+    int totalLength = 0;
+    wchar_t* tokenBuffer;
+    wchar_t* token = wcstok(wcsdup(sentence), L" .,", &tokenBuffer);
+    
+    while (token != NULL) {
+        wordCounter++;
+        totalLength += wcslen(token);
+        token = wcstok(NULL, L" .,", &tokenBuffer);
+    }
+
+    return wordCounter > 0 ? (float)(totalLength / wordCounter) : 0.0f;
 }
