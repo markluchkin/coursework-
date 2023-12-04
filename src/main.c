@@ -7,7 +7,8 @@ int main() {
 
     switch (getCommand()){
         case 1: 
-        wprintf(L"ПРИВЕТ ITS 1\n");
+        //wprintf(L"ПРИВЕТ ITS 1\n");
+        printText(inputText());
         break;
         case 2:
         wprintf(L"HELLO ITS 2\n");

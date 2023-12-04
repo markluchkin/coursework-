@@ -13,10 +13,4 @@ typedef struct{
     int size;
 }Text;
 
-// typedef struct{
-//     wchar_t* chars;
-//     int* occurrences;
-//     int occurrencesSize;
-// } Word;
-
 #endif

@@ -4,7 +4,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <ctype.h>
+//#include <ctype.h>
+#include <wctype.h>
 #include <wchar.h>
 #include <locale.h>
 #include "../include/structures.h"

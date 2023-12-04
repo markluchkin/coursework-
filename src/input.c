@@ -7,7 +7,7 @@ int getCommand(){
     return commandNumber;
 }
 
-Sentence inputSentence(int * sentenceCounter){
+Sentence inputSentence(int *sentenceCounter){
     Sentence sentence;
     sentence.chars = malloc(sizeof(wchar_t));
     int sentenceCapacity = 1;
@@ -24,7 +24,7 @@ Sentence inputSentence(int * sentenceCounter){
             continue;
         }
 
-        if (isspace(currChar) && flag){
+        if (iswspace(currChar) && flag){
             continue;
         }
 
@@ -71,7 +71,26 @@ Text inputText(){
             continue;
         }
 
-        
-    }
-}
+        wchar_t *tokenBuffer;
+        wchar_t *token = wcstok(wcsdup(currSentence.chars), L" .,", &tokenBuffer);
+        if ((token) == NULL){
+            continue;
+        }
 
+        text.sentences[textSize++] = currSentence;
+        text.size = textSize;
+
+        if (textSize >= textCapacity){
+            textCapacity *= 2;
+            text.sentences = realloc(text.sentences, textCapacity * sizeof(Sentence));
+        }
+    }
+
+    if (text.sentences[0].chars == NULL){
+        wprintf(L"ERROR: INCORRECT INPUT\n");
+        exit(0);
+
+    }
+
+    return text;
+}
