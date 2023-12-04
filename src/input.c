@@ -7,7 +7,7 @@ int getCommand(){
     return commandNumber;
 }
 
-Sentence inputSentence(int *sentenceCounter){
+Sentence inputSentence(int *newLineCounter){
     Sentence sentence;
     sentence.chars = malloc(sizeof(wchar_t));
     int sentenceCapacity = 1;
@@ -18,8 +18,8 @@ Sentence inputSentence(int *sentenceCounter){
     do{
         currChar = getwchar();
         if (currChar == L'\n'){
-            (*sentenceCounter)++;
-            if ((*sentenceCounter) == 2){
+            (*newLineCounter)++;
+            if ((*newLineCounter) == 2){
                 break;
             }
             continue;
@@ -48,10 +48,10 @@ Text inputText(){
     text.sentences = malloc(sizeof(Sentence));
     int textCapacity = 1;
     int textSize = 0;
-    int sentenceCounter = 0;
+    int newLineCounter = 0;
 
     for(;;){
-        Sentence currSentence = inputSentence(&sentenceCounter);
+        Sentence currSentence = inputSentence(&newLineCounter);
         int identicalSentences = 0;
 
         for (int i = 0; i < textSize; ++i) {
@@ -62,10 +62,10 @@ Text inputText(){
 
         }
 
-        if (sentenceCounter == 2){
+        if (newLineCounter == 2){
             break;
         }else{
-            sentenceCounter = 0;
+            newLineCounter = 0;
         }
 
         if (identicalSentences == 1){
@@ -88,7 +88,7 @@ Text inputText(){
     }
 
     if (text.sentences[0].chars == NULL){
-        wprintf(L"ERROR: INCORRECT INPUT\n");
+        wprintf(L"ERROR: Incorrect input.\n");
         exit(0);
 
     }

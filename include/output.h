@@ -2,7 +2,7 @@
 #define OUTPUT_H
 
 #include <wchar.h>
-#include <stdio.h>
+//#include <stdio.h>
 #include "../include/structures.h"
 
 void printCwInfo();

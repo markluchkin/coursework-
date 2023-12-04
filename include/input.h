@@ -1,14 +1,12 @@
 #ifndef INPUTTEXT_H
 #define INPUTTEXT_H
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-//#include <ctype.h>
-#include <wctype.h>
-#include <wchar.h>
-#include <locale.h>
+//#include <stdio.h>
+//#include <string.h>
 #include "../include/structures.h"
+#include <stdlib.h>
+#include <wctype.h>
+#include <locale.h>
 
 int getCommand();
 Sentence inputSentence(int *sentenceCounter);
