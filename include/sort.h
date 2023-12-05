@@ -6,5 +6,7 @@
 #include <wctype.h>
 #include <locale.h>
 
+int compareSentences(const void *a, const void *b);
+void sortSentences(Text *text);
 
 #endif

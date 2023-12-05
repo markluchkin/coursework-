@@ -40,7 +40,19 @@ Sentence inputSentence(int *newLineCounter){
     }while(currChar != L'.');
     sentence.chars[sentenceSize] = L'\0';
     sentence.size = sentenceSize;
-    //sentence.size = calculateAverageWordsLength(sentence.chars);
+    
+    int wordCounter = 0;
+    wchar_t* tokenBuffer;
+    wchar_t* copy = wcsdup(sentence.chars); 
+    wchar_t* word = wcstok(copy, L" ,", &tokenBuffer);
+
+    while (word != NULL) {
+        wordCounter++;
+        word = wcstok(NULL, L" ,", &tokenBuffer);
+    }
+
+    sentence.wordCounter = wordCounter;
+
     return sentence;
 }
 

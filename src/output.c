@@ -7,7 +7,8 @@ void printCwInfo() {
 void printText(Text text){
     for (int i = 0; i < text.size; i++){
         wprintf(L"%ls\n", text.sentences[i].chars);
-        wprintf(L"средняя длина слов - %f длина текста - %d\n", text.sentences[i].averageWordsLength, text.size);
+        //wprintf(L"средняя длина слов - %f кол-во слов - %d", text.sentences[i].averageWordsLength, text.sentences[i].wordCounter);
     }
     wprintf(L"\n");
 }
+

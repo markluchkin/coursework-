@@ -9,16 +9,24 @@ int main() {
         case 1: 
         printText(inputText());
         break;
-        case 2:
 
+        case 2:
+        Text input_1 = inputText();
+        sortSentences(&input_1);
+        printText(input_1);
         break;
+
         case 3:
-        
+        Text input = inputText();
+        sortWords(&input);
+        printText(input);
         break;
+
         case 4:
         
         break;
         case 5:
+
         //вывод справки о функциях, которые реализует программа.
         wprintf(L"0 - Вывод текста после первичной обязательной обработки (если предусмотрена заданием данного уровня сложности).\n"
                 "1 - Вывод всех предложения, в которых каждое слово удовлетворяет введенной строке-условию.\n"
@@ -27,6 +35,7 @@ int main() {
                 "4 - Удалить все предложения, в котором больше 5 или меньше 2 слов.\n"
                 "5 - Вывод справки о функциях, которые реализует программа.\n");
         break;
+        
         default:
         wprintf(L"Error: Incorrect command. Input 5 to see the list of functions.\n");
     }
