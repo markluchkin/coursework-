@@ -11,15 +11,15 @@ int main() {
         break;
 
         case 2:
-        Text input_1 = inputText();
-        sortSentences(&input_1);
-        printText(input_1);
+        Text inputToSortSentences = inputText();
+        sortSentences(&inputToSortSentences);
+        printText(inputToSortSentences);
         break;
 
         case 3:
-        Text input = inputText();
-        sortWords(&input);
-        printText(input);
+        Text inputToSortWords = inputText();
+        sortWords(&inputToSortWords);
+        printText(inputToSortWords);
         break;
 
         case 4:
