@@ -2,10 +2,11 @@
 #define OUTPUT_H
 
 #include <wchar.h>
-//#include <stdio.h>
+#include <stdlib.h>
 #include "../include/structures.h"
 
 void printCwInfo();
 void printText(Text text);
+void printNeededSentences(Text text);
 
 #endif

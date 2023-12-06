@@ -6,8 +6,12 @@ int main() {
     printCwInfo();
 
     switch (getCommand()){
-        case 1: 
+        case 0:
         printText(inputText());
+        break;
+
+        case 1: 
+        
         break;
 
         case 2:
@@ -23,6 +27,7 @@ int main() {
         break;
 
         case 4:
+        printNeededSentences(inputText());
         
         break;
         case 5:

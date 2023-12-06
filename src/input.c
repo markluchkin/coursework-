@@ -78,7 +78,7 @@ Text inputText(){
         if (newLineCounter == 2){
             break;
         }else{
-            newLineCounter = 0;
+            newLineCounter = 1;
         }
 
         if (identicalSentences == 1){
@@ -103,7 +103,7 @@ Text inputText(){
     }
 
     if (text.sentences[0].chars == NULL){
-        wprintf(L"ERROR: Incorrect input.\n");
+        wprintf(L"Error: Incorrect input.\n");
         exit(0);
 
     }
