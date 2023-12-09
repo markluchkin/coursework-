@@ -20,8 +20,10 @@ void sortWords(Text* text) {
         Sentence* sentence = &(text->sentences[i]);
         wchar_t** words = (wchar_t**)malloc(sentence->wordCounter * sizeof(wchar_t*));
         wchar_t* word = wcstok(sentence->chars, L" .,", &(sentence->chars));
+        wchar_t** punctuations = sentence->punctuation; 
 
         int wordIndex = 0;
+        int punctuationIndex = 0;  
         while (word != NULL) {
             words[wordIndex] = word;
             word = wcstok(NULL, L" .,", &(sentence->chars));
@@ -35,9 +37,15 @@ void sortWords(Text* text) {
         for (int j = 0; j < sentence->wordCounter; j++) {
             wcscat(newSentence, words[j]);
             wcscat(newSentence, L" ");
+            wcscat(newSentence, punctuations[punctuationIndex]);
+            punctuationIndex++;
+            
         }
+        
         newSentence[sentence->size - 1] = L'.';
         newSentence[sentence->size] = L'\0';
         sentence->chars = newSentence;
+
+        free(words);
     }
 }

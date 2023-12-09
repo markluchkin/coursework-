@@ -8,6 +8,7 @@ typedef struct{
     int size;
     float averageWordsLength;
     int wordCounter;
+    wchar_t** punctuation;
 }Sentence;
 
 typedef struct{

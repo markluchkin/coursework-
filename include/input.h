@@ -12,5 +12,6 @@ int getCommand();
 Sentence inputSentence(int *sentenceCounter);
 Text inputText();
 float calculateAverageWordsLength(wchar_t *sentence);
+wchar_t **getPunctuation(Sentence sentence);
 
 #endif

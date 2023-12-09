@@ -93,6 +93,7 @@ Text inputText(){
 
         text.sentences[textSize] = currSentence;
         text.sentences[textSize].averageWordsLength = calculateAverageWordsLength(currSentence.chars);
+        text.sentences[textSize].punctuation = getPunctuation(currSentence);
         textSize++;
         text.size = textSize;
 
@@ -124,4 +125,38 @@ float calculateAverageWordsLength(wchar_t *sentence){
     }
 
     return wordCounter > 0 ? (float)(totalLength / wordCounter) : 0.0f;
+}
+
+
+wchar_t **getPunctuation(Sentence sentence){
+    int punctuationCapacity = 1;
+    int punctuationSize = 0;
+    wchar_t **punctuation = malloc(punctuationCapacity * sizeof(wchar_t *));
+
+    for (int i = 0; i <= sentence.size; i++){
+        if (sentence.chars[i] == L' ' || sentence.chars[i] == L',' || sentence.chars[i] == L'.'){
+            int capacity = 1;
+            int size = 0;
+            int index = 0;
+            wchar_t *currChars = malloc(capacity * sizeof(wchar_t));
+            while (!iswalnum(sentence.chars[i + index])){
+                currChars[size] = sentence.chars[i + index];
+                index++;
+                size++;
+                if (size >= capacity){
+                    capacity *= 2;
+                    currChars = realloc(currChars, capacity * sizeof(wchar_t));
+                }
+                
+            }
+
+            punctuation[punctuationSize] = currChars;
+            punctuationSize++;
+            if (size >= capacity){
+                punctuationCapacity *= 2;
+                punctuation = realloc(punctuation, capacity * sizeof(wchar_t*));
+            }
+        }
+    }
+    return punctuation;
 }
