@@ -137,7 +137,7 @@ wchar_t **getPunctuation(Sentence sentence){
         if (sentence.chars[i] == L' ' || sentence.chars[i] == L',' || sentence.chars[i] == L'.'){
             int capacity = 1;
             int size = 0;
-            int index = i;
+            // int index = i;
             wchar_t *currChars = calloc(capacity,sizeof(wchar_t));
             while (sentence.chars[i]==L'.'||sentence.chars[i]==L' '||sentence.chars[i]==L','){
                 if (size > capacity){

@@ -33,17 +33,13 @@ void sortWords(Text* text) {
         qsort(words, sentence->wordCounter, sizeof(wchar_t*), compareWords);
 
         wchar_t* newSentence = calloc((sentence->size + 2),sizeof(wchar_t));
-//        newSentence[0] = L'\0';
         for (int j = 0; j < sentence->wordCounter; j++) {
             wcscat(newSentence, words[j]);
-//            wcscat(newSentence, L" ");
             wcscat(newSentence, punctuations[punctuationIndex]);
             punctuationIndex++;
             
         }
-        
-//        newSentence[sentence->size - 1] = L'.';
-//        newSentence[sentence->size] = L'\0';
+
         sentence->chars = newSentence;
 
         free(words);
