@@ -7,6 +7,27 @@ int getCommand(){
     return commandNumber;
 }
 
+wchar_t *getPattern(){
+    int capacity = 1;
+    int size = 0;
+    wchar_t *pattern = malloc(capacity * sizeof(wchar_t));
+    wchar_t currChar = getwchar();
+    // wchar_t *mask;
+    // wscanf(L"%ls", mask); 
+    while(currChar != L'\n'){ 
+        pattern[size] = currChar;
+        size++;
+        if (capacity <= size){
+            capacity *= 2;
+            pattern = realloc(pattern, sizeof(wchar_t) * capacity);
+        }
+        currChar = getwchar();
+    }
+    pattern = realloc(pattern, sizeof(wchar_t) * (capacity + 1));
+    pattern[size + 1] = L'\0';
+    return pattern;
+}
+
 Sentence inputSentence(int *newLineCounter){
     Sentence sentence;
     sentence.chars = malloc(sizeof(wchar_t));
@@ -131,30 +152,30 @@ float calculateAverageWordsLength(wchar_t *sentence){
 wchar_t **getPunctuation(Sentence sentence){
     int punctuationCapacity = 1;
     int punctuationSize = 0;
-    wchar_t **punctuation = malloc(punctuationCapacity * sizeof(wchar_t *));
+    wchar_t **punctuation = calloc(punctuationCapacity, sizeof(wchar_t *));
 
     for (int i = 0; i <= sentence.size; i++){
         if (sentence.chars[i] == L' ' || sentence.chars[i] == L',' || sentence.chars[i] == L'.'){
             int capacity = 1;
             int size = 0;
-            int index = 0;
-            wchar_t *currChars = malloc(capacity * sizeof(wchar_t));
-            while (!iswalnum(sentence.chars[i + index])){
-                currChars[size] = sentence.chars[i + index];
-                index++;
-                size++;
-                if (size >= capacity){
+            // int index = i;
+            wchar_t *currChars = calloc(capacity,sizeof(wchar_t));
+            while (sentence.chars[i]==L'.'||sentence.chars[i]==L' '||sentence.chars[i]==L','){
+                if (size > capacity){
                     capacity *= 2;
                     currChars = realloc(currChars, capacity * sizeof(wchar_t));
                 }
-                
+                currChars[size] = sentence.chars[i];
+                i++;
+                size++;
+
             }
 
             punctuation[punctuationSize] = currChars;
             punctuationSize++;
-            if (size >= capacity){
+            if (punctuationSize >= punctuationCapacity){
                 punctuationCapacity *= 2;
-                punctuation = realloc(punctuation, capacity * sizeof(wchar_t*));
+                punctuation = realloc(punctuation, punctuationCapacity * sizeof(wchar_t*));
             }
         }
     }

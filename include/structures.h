@@ -1,7 +1,10 @@
 #ifndef STRUCTERS_H
 #define STRUCTERS_H
 
+#include <stdlib.h>
+#include <wctype.h>
 #include <wchar.h>
+#include <locale.h>
 
 typedef struct{
     wchar_t* chars;

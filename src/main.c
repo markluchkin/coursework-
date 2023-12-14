@@ -11,24 +11,25 @@ int main() {
         break;
 
         case 1: 
-        
-        break;
+            wchar_t *pattern = getPattern();
+            Text inputTextToMatch = inputText();
+            printByPattern(inputTextToMatch, pattern);
+            break;
 
-        case 2:
-        Text inputToSortSentences = inputText();
-        sortSentences(&inputToSortSentences);
-        printText(inputToSortSentences);
-        break;
-
-        case 3:
-        Text inputToSortWords = inputText();
-        sortWords(&inputToSortWords);
-        printText(inputToSortWords);
-        break;
-
+        case 2: {
+            Text inputToSortSentences = inputText();
+            sortSentences(&inputToSortSentences);
+            printText(inputToSortSentences);
+            break;
+        }
+        case 3: {
+            Text inputToSortWords = inputText();
+            sortWords(&inputToSortWords);
+            printText(inputToSortWords);
+            break;
+        }
         case 4:
         printNeededSentences(inputText());
-        
         break;
         case 5:
 
