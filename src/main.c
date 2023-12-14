@@ -11,8 +11,10 @@ int main() {
         break;
 
         case 1: 
-        
-        break;
+            wchar_t *pattern = getPattern();
+            Text inputTextToMatch = inputText();
+            printByPattern(inputTextToMatch, pattern);
+            break;
 
         case 2: {
             Text inputToSortSentences = inputText();

@@ -2,7 +2,7 @@ CC := gcc
 
 CFLAGS := -Wall -std=gnu99 -g
 
-SRCS := src/main.c src/output.c src/input.c src/sort.c src/sortByWordsLength.c 
+SRCS := src/main.c src/output.c src/input.c src/sort.c src/sortByWordsLength.c src/printByPattern.c
 
 TARGET := cw
 

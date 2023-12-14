@@ -7,6 +7,5 @@
 #include "../include/sort.h"
 #include "../include/sortByWordsLength.h"
 #include "../include/printByPattern.h"
-#include <locale.h>
 
 #endif

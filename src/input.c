@@ -7,6 +7,27 @@ int getCommand(){
     return commandNumber;
 }
 
+wchar_t *getPattern(){
+    int capacity = 1;
+    int size = 0;
+    wchar_t *pattern = malloc(capacity * sizeof(wchar_t));
+    wchar_t currChar = getwchar();
+    // wchar_t *mask;
+    // wscanf(L"%ls", mask); 
+    while(currChar != L'\n'){ 
+        pattern[size] = currChar;
+        size++;
+        if (capacity <= size){
+            capacity *= 2;
+            pattern = realloc(pattern, sizeof(wchar_t) * capacity);
+        }
+        currChar = getwchar();
+    }
+    pattern = realloc(pattern, sizeof(wchar_t) * (capacity + 1));
+    pattern[size + 1] = L'\0';
+    return pattern;
+}
+
 Sentence inputSentence(int *newLineCounter){
     Sentence sentence;
     sentence.chars = malloc(sizeof(wchar_t));
