@@ -2,7 +2,7 @@
 
 int getCommand(){
     int commandNumber;
-    wscanf(L"%d", &commandNumber);
+    wscanf(L"%d\n", &commandNumber);
 
     return commandNumber;
 }
@@ -14,26 +14,25 @@ wchar_t *getPattern(){
     wchar_t currChar = getwchar();
     // wchar_t *mask;
     // wscanf(L"%ls", mask); 
-    while(currChar != L'\n'){ 
-        pattern[size] = currChar;
-        size++;
+    while(currChar != L'\n'){
         if (capacity <= size){
-            capacity *= 2;
-            pattern = realloc(pattern, sizeof(wchar_t) * capacity);
+            capacity=size+1;
+            pattern = realloc(pattern, sizeof(wchar_t) * (capacity+1));
         }
+        pattern[size++] = currChar;
         currChar = getwchar();
     }
-    pattern = realloc(pattern, sizeof(wchar_t) * (capacity + 1));
-    pattern[size + 1] = L'\0';
+//    pattern = realloc(pattern, sizeof(wchar_t) * (capacity + 1));
+    pattern[size] = L'\0';
     return pattern;
 }
 
 Sentence inputSentence(int *newLineCounter){
     Sentence sentence;
-    sentence.chars = malloc(sizeof(wchar_t));
     int sentenceCapacity = 1;
+    sentence.chars = malloc(sizeof(wchar_t)*sentenceCapacity);
     int sentenceSize = 0;
-    wchar_t currChar = getwchar();
+    wchar_t currChar;
     int flag = 1;
 
     do{
@@ -43,22 +42,24 @@ Sentence inputSentence(int *newLineCounter){
             if ((*newLineCounter) == 2){
                 break;
             }
-            continue;
+        } else {
+            (*newLineCounter)=0;
         }
 
-        if (iswspace(currChar) && flag){
+        if (iswblank(currChar) && flag){
             continue;
         }
 
         flag = 0;
         sentence.chars[sentenceSize++] = currChar;
         if (sentenceSize >= sentenceCapacity){
-            sentenceCapacity *= 2;
+            sentenceCapacity++;
             sentence.chars = realloc(sentence.chars, sentenceCapacity * sizeof(wchar_t)); 
         }
 
          
     }while(currChar != L'.');
+//    sentence.chars[sentenceSize] = L'\n';
     sentence.chars[sentenceSize] = L'\0';
     sentence.size = sentenceSize;
     
@@ -98,8 +99,6 @@ Text inputText(){
 
         if (newLineCounter == 2){
             break;
-        }else{
-            newLineCounter = 1;
         }
 
         if (identicalSentences == 1){

@@ -10,12 +10,12 @@ int main() {
         printText(inputText());
         break;
 
-        case 1: 
+        case 1: {
             wchar_t *pattern = getPattern();
             Text inputTextToMatch = inputText();
             printByPattern(inputTextToMatch, pattern);
             break;
-
+        }
         case 2: {
             Text inputToSortSentences = inputText();
             sortSentences(&inputToSortSentences);
