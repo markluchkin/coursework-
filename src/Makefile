@@ -5,7 +5,7 @@ CORE = ./src/
 HEADER = ./include/
 BIN = ./bin/
 
-CFLAGS = -Wall -std=gnu99 -I$(HEADER)
+CFLAGS = -Wall -std=gnu99 -I$(HEADER) -g
 
 SRC = $(wildcard $(CORE)*.c)
 OBJ = $(patsubst $(CORE)%.c, $(BIN)%.o, $(SRC))

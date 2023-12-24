@@ -4,7 +4,7 @@ wchar_t* getFirstWord(){
     int capacity = 1;
     int size = 0;
     wchar_t *pattern = malloc(capacity * sizeof(wchar_t));
-    wchar_t currChar = getwchar();
+    wchar_t currChar;
     do{
         currChar = getwchar();
         pattern[size] = currChar;
@@ -23,7 +23,7 @@ wchar_t* getFirstWord(){
 
 int getCommand(){
     int commandNumber;
-    wscanf(L"%d", &commandNumber);
+    wscanf(L"%d\n", &commandNumber);
 
     return commandNumber;
 }
@@ -33,17 +33,16 @@ wchar_t *getPattern(){
     int size = 0;
     wchar_t *pattern = malloc(capacity * sizeof(wchar_t));
     wchar_t currChar = getwchar();
-    while(currChar != L'\n'){ 
-        pattern[size] = currChar;
-        size++;
+    while(currChar != L'\n') {
         if (capacity <= size){
-            capacity *= 2;
+            capacity=size+1;
             pattern = realloc(pattern, sizeof(wchar_t) * capacity);
         }
+        pattern[size] = currChar;
+        size++;
         currChar = getwchar();
     }
-    pattern = realloc(pattern, sizeof(wchar_t) * (capacity + 1));
-    pattern[size + 1] = L'\0';
+    pattern[size] = L'\0';
     return pattern;
 }
 
@@ -52,7 +51,7 @@ Sentence inputSentence(int *newLineCounter){
     sentence.chars = malloc(sizeof(wchar_t));
     int sentenceCapacity = 1;
     int sentenceSize = 0;
-    wchar_t currChar = getwchar();
+    wchar_t currChar;
     int flag = 1;
 
     do{
@@ -115,10 +114,10 @@ Text inputText(){
 
         }
 
-        if (newLineCounter == 2){
+        if (newLineCounter == 2) {
             break;
-        }else{
-            newLineCounter = 1;
+        } else {
+            newLineCounter=0;
         }
 
         if (identicalSentences == 1){
